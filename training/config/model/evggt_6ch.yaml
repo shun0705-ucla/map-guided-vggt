@@ -1,0 +1,33 @@
+_target_: vggt.models.vggt.VGGT
+_recursive_: true
+
+aggregator:
+  _target_: vggt.models.aggregator.Aggregator
+  embed_dim: 384
+  depth: 4
+  num_heads: 4
+  mlp_ratio: 2.0
+  num_register_tokens: 2
+  num_register_tokens_patch: 3
+  patch_embed: "dinov2_vits14_reg_6ch"
+  enable_aux_branch: False
+
+camera_head:
+  _target_: vggt.heads.camera_head.CameraHead
+  dim_in: 768
+
+point_head:
+  _target_: vggt.heads.dpt_head.DPTHead
+  dim_in: 768
+  output_dim: 4
+  activation: "inv_log"
+  conf_activation: "expp1"
+  intermediate_layer_idx: [0, 1, 2, 3]
+
+depth_head:
+  _target_: vggt.heads.dpt_head.DPTHead
+  dim_in: 768
+  output_dim: 2
+  activation: "exp"
+  conf_activation: "expp1"
+  intermediate_layer_idx: [0, 1, 2, 3]

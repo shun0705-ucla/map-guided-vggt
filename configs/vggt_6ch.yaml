@@ -1,0 +1,44 @@
+__object__:
+  path: vggt.models.vggt
+  name: VGGT
+  args: as_params
+
+aggregator:
+  __object__:
+    path: vggt.models.aggregator
+    name: Aggregator
+    args: as_params
+  embed_dim: 1024
+  depth: 24
+  num_heads: 16
+  mlp_ratio: 4.0
+  num_register_tokens: 4
+  patch_embed: "dinov2_vitl14_reg_6ch"
+  enable_aux_branch: False
+
+camera_head:
+  __object__:
+    path: vggt.heads.camera_head
+    name: CameraHead
+    args: as_params
+  dim_in: 2048
+
+point_head:
+  __object__:
+    path: vggt.heads.dpt_head
+    name: DPTHead
+    args: as_params
+  dim_in: 2048
+  output_dim: 4
+  activation: "inv_log"
+  conf_activation: "expp1"
+
+depth_head:
+  __object__:
+    path: vggt.heads.dpt_head
+    name: DPTHead
+    args: as_params
+  dim_in: 2048
+  output_dim: 2
+  activation: "exp"
+  conf_activation: "expp1"
