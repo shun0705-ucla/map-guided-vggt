@@ -1,4 +1,10 @@
-Pillow
+# ---- core pins for Colab compatibility ----
+numpy==2.0.2
+pillow==11.3.0
+fsspec==2025.3.0
+gcsfs==2025.3.0
+
+# ---- your project deps ----
 huggingface_hub
 einops
 safetensors
@@ -9,3 +15,4 @@ iopath
 wcmatch
 tensorboard
 fvcore
+yacs
