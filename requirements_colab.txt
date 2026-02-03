@@ -1,0 +1,11 @@
+Pillow
+huggingface_hub
+einops
+safetensors
+hydra-core
+omegaconf
+opencv-python
+iopath
+wcmatch
+tensorboard
+fvcore
