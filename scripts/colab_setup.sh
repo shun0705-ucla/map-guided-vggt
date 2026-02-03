@@ -27,7 +27,6 @@ if [[ "$SKIP_IF_BUCKET_US_AND_NOT_US" == "1" && "$BUCKET_LOC_FIXED" == "US" ]]; 
 
   if [ -z "$ZONE" ]; then
     echo "[WARN] Could not detect Colab zone. Skip fast region check."
-    exit 0
   else
     REGION=$(echo "$ZONE" | awk -F'/' '{print $NF}' | sed 's/-[a-z]$//')
     echo "[INFO] Fast region check: bucket=$BUCKET_LOC_FIXED, colab_region=$REGION"
