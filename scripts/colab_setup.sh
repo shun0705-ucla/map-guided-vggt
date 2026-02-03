@@ -27,6 +27,7 @@ if [[ "$SKIP_IF_BUCKET_US_AND_NOT_US" == "1" && "$BUCKET_LOC_FIXED" == "US" ]]; 
 
   if [ -z "$ZONE" ]; then
     echo "[WARN] Could not detect Colab zone. Skip fast region check."
+    exit 0
   else
     REGION=$(echo "$ZONE" | awk -F'/' '{print $NF}' | sed 's/-[a-z]$//')
     echo "[INFO] Fast region check: bucket=$BUCKET_LOC_FIXED, colab_region=$REGION"
@@ -49,7 +50,7 @@ pip install -U --force-reinstall \
   torch==2.3.1 torchvision==0.18.1 \
   --index-url https://download.pytorch.org/whl/cu121
 # install other dependencies
-pip install -U --force-reinstall -r requirements_colab.txt
+pip install -U -r requirements_colab.txt --no-deps
 
 # 2) ensure gsutil exists
 if ! command -v gsutil >/dev/null 2>&1; then
