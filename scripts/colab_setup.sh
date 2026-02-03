@@ -49,7 +49,7 @@ pip install -U --force-reinstall \
   torch==2.3.1 torchvision==0.18.1 \
   --index-url https://download.pytorch.org/whl/cu121
 # install other dependencies
-pip install -r requirements_colab.txt
+pip install -U --force-reinstall -r requirements_colab.txt
 
 # 2) ensure gsutil exists
 if ! command -v gsutil >/dev/null 2>&1; then
